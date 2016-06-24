@@ -1,0 +1,35 @@
+.mainFooter
+  background -moz-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('img/bg.jpg') no-repeat center / cover
+  background -webkit-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('img/bg.jpg') no-repeat center / cover
+  background linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('img/bg.jpg') no-repeat center / cover
+  width 100%
+  padding: 4em 4em 6em 4em;
+  position: relative;
+  text-align: center;
+  width: 100%;
+.socials__link
+  text-decoration none
+  font-size 2rem
+  color rgba(white, 0.4)
+  margin 0 0.6rem
+  transition 0.5s
+  &:hover,&:active,&:focus
+    color #49bf9d
+.copyrights
+  display block
+  font-size .8rem
+  padding 0
+  li
+    display inline-block
+    padding 0 0.75rem
+    line-height 1rem
+    &:not(:last-child)
+      border-right 1px solid rgba(white, 0.4)
+@media (min-width 992px) 
+  .mainFooter
+    background transparent
+    position fixed
+    width 30%
+    text-align right
+    bottom 0
+    left 0
