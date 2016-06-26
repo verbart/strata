@@ -21,7 +21,7 @@ gulp.task('views', function buildHTML() {
       })
     }))
     .pipe(pug({
-      pretty: true
+      pretty: isDevelopment
     }))
     .pipe(gulp.dest('./'));
 });
