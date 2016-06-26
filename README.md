@@ -11,4 +11,4 @@
 
 ### Build
 
-* Run `npm run build` or `gulp build` for building.
+* Run `npm run build` for building.
