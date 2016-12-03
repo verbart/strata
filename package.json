@@ -1,28 +1,35 @@
 {
   "name": "spectral",
   "version": "0.0.1",
-  "devDependencies": {
-    "browser-sync": "^2.13.0",
-    "gulp": "^3.9.1",
-    "gulp-if": "^2.0.1",
-    "gulp-notify": "^2.2.0",
-    "gulp-plumber": "^1.1.0",
-    "gulp-pug": "^3.0.3",
-    "gulp-rename": "^1.2.2",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-stylus": "^2.4.0",
-    "stylus": "^0.54.5"
-  },
-  "scripts": {
-    "serve": "NODE_ENV=development ./node_modules/.bin/gulp",
-    "build": "NODE_ENV=production ./node_modules/.bin/gulp build"
-  },
+  "author": "Artem Verbat",
+  "homepage": "https://github.com/verbart/strata#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/students-org/spectral.git"
+    "url": "git+https://github.com/verbart/strata.git"
   },
   "bugs": {
-    "url": "https://github.com/students-org/spectral/issues"
+    "url": "https://github.com/verbart/strata/issues"
   },
-  "homepage": "https://github.com/students-org/spectral#readme"
+  "scripts": {
+    "start": "NODE_ENV=development ./node_modules/.bin/gulp",
+    "build": "NODE_ENV=production ./node_modules/.bin/gulp build"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.5.3",
+    "browser-sync": "^2.18.2",
+    "del": "^2.2.2",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-clean-css": "^2.0.13",
+    "gulp-if": "^2.0.2",
+    "gulp-imagemin": "^3.1.1",
+    "gulp-postcss": "^6.2.0",
+    "gulp-pug": "^3.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^1.9.1",
+    "gulp-stylus": "^2.6.0",
+    "gulp-util": "^3.0.7"
+  },
+  "dependencies": {
+    "font-awesome": "^4.7.0"
+  }
 }

@@ -1,74 +1,97 @@
 const gulp = require('gulp');
-const sourcemaps = require('gulp-sourcemaps');
+const postcss = require('gulp-postcss');
 const stylus = require('gulp-stylus');
-const pug = require('gulp-pug');
-const resolver = require('stylus').resolver;
-const rename = require('gulp-rename');
+const cleanCSS = require('gulp-clean-css');
+const autoprefixer = require('autoprefixer');
 const browserSync = require('browser-sync').create();
 const gulpIf = require('gulp-if');
-const notify = require('gulp-notify');
-const plumber = require('gulp-plumber');
+const sourcemaps = require('gulp-sourcemaps');
+const rename = require('gulp-rename');
+const del = require('del');
+const gutil = require('gulp-util');
+const pug = require('gulp-pug');
+const imagemin = require('gulp-imagemin');
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
+
 gulp.task('views', function buildHTML() {
-  return gulp.src('views/**/!(_)*.pug')
-    .pipe(plumber({
-      errorHandler: notify.onError(function (err) {
-        return {
-          message: err.message
-        };
-      })
-    }))
-    .pipe(pug({
-      pretty: isDevelopment
-    }))
-    .pipe(gulp.dest('./'));
+    return gulp.src('./src/index.pug')
+        .pipe(pug())
+        .on('error', function(error) {
+            gutil.log(gutil.colors.red('Error: ' + error.message));
+            this.emit('end');
+        })
+        .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('styles', function () {
-  return gulp.src('./styles/main.styl')
-    .pipe(plumber({
-      errorHandler: notify.onError(function (err) {
-        return {
-          message: err.message
-        };
-      })
-    }))
-    .pipe(gulpIf(isDevelopment, sourcemaps.init()))
-      .pipe(stylus({
-        'include-css': true,
-        define: {
-          url: resolver()
-        }
-      }))
-    .pipe(gulpIf(isDevelopment, sourcemaps.write()))
-    .pipe(rename('style.css'))
-    .pipe(gulp.dest('./'));
+    return gulp.src('./src/app.styl')
+        .pipe(gulpIf(isDevelopment, sourcemaps.init()))
+        .pipe(stylus({
+            'include css': true
+        })
+            .on('error', function(error) {
+                gutil.log(gutil.colors.red('Error: ' + error.message));
+                this.emit('end');
+            }))
+        .pipe(gulpIf(!isDevelopment, postcss([
+            autoprefixer({
+                browsers: ['> 5%', 'ff > 14']
+            })
+        ])))
+        .pipe(gulpIf(isDevelopment, sourcemaps.write()))
+        .pipe(gulpIf(!isDevelopment, cleanCSS()))
+        .pipe(rename('style.css'))
+        .pipe(gulp.dest('./dist/css'))
+});
+
+gulp.task('fonts', function () {
+    return gulp.src([
+        './node_modules/font-awesome/fonts/**/*.*'
+    ])
+        .pipe(gulp.dest('./dist/fonts'));
+});
+
+gulp.task('images', function () {
+    return gulp.src('./src/**/*.{png,jpg,jpeg,gif,svg}')
+        .pipe(imagemin())
+        .pipe(rename(function (path) {
+            path.dirname = '';
+        }))
+        .pipe(gulp.dest('./dist/images'));
 });
 
 gulp.task('watch', function () {
-  gulp.watch('./views/**/*.pug', ['views']);
-  gulp.watch('./styles/**/*.styl', ['styles']);
+    gulp.watch('./src/**/*.pug', gulp.series('views'));
+    gulp.watch('./src/**/*.{css,styl}', gulp.series('styles'));
 });
 
 gulp.task('serve', function () {
-  browserSync.init({
-    server: './',
-    port: 8080
-  });
+    browserSync.init({
+        server: './dist',
+        port: 8080
+    });
 
-  browserSync.watch('./*.html').on('change', browserSync.reload);
-  browserSync.watch('./style.css').on('change', browserSync.reload);
+    browserSync.watch('./dist/**/*.*').on('change', browserSync.reload);
 });
 
-gulp.task('build', [
-  'views',
-  'styles'
-]);
+gulp.task('clean', function () {
+    return del('./dist')
+});
 
-gulp.task('default', [
-  'build',
-  'watch',
-  'serve'
-]);
+gulp.task('build', gulp.series(
+    'clean',
+    gulp.parallel(
+        'views',
+        'styles',
+        'fonts',
+        'images'
+    )));
+
+gulp.task('default', gulp.series(
+    'build',
+    gulp.parallel(
+        'watch',
+        'serve'
+    )));
