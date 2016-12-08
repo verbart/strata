@@ -1,0 +1,51 @@
+.thumbnail
+  margin-bottom 30px
+  &__caption
+    font-size 1em
+    margin-top 0
+    margin-bottom .5em
+    font-weight 400
+    line-height 1.5
+    color #787878
+  &__description
+    font-size .8em
+    line-height 1.5em
+    margin 0
+  &__preview
+    display block
+    position relative
+    margin-bottom 1.1em
+    color #eee
+    border-radius .35em
+    overflow hidden
+    height 200px
+    background-position center
+    background-size cover
+    background-repeat no-repeat
+    &:before, &:after
+      content ''
+      position absolute
+      display inline-block
+      opacity 0
+      transition opacity .5s
+    &:before
+      top 0
+      bottom 0
+      left 0
+      right 0
+      background rgba(black, .5)
+    &:after
+      content attr(data-title)
+      left 50%
+      bottom 50%
+      transform translate(-50%, 50%)
+      padding .2rem 1rem
+      color #fff
+      border solid 3px rgba(#fff, .5)
+      text-decoration none
+      text-transform capitalize
+      border-radius .35em
+
+    &:hover
+      &:before, &:after
+        opacity 1
