@@ -7,26 +7,8 @@
   min-height 400px
   text-align center
   padding 2rem 1rem
-  background linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-             url('../images/bg.jpg') no-repeat center / cover
-  &__avatar
-    display inline-block
-    width 7rem
-    height @width
-    margin-bottom 2rem
-    img
-      border-radius 50%
-  &__info
-    font-size 1.6rem
-    line-height 1.8
-    color rgba(white, 0.5)
-    margin 0
-    @media (min-width 992px)
-      font-size 1.28rem
-      line-height 1.8
-    strong
-      color #fff
-      font-weight 300
+  background url('../images/overlay.png'),
+             url('../images/bg.jpg') no-repeat top left / auto 100%
   @media (min-width 992px)
     position fixed
     top 0
@@ -36,10 +18,26 @@
     text-align right
     align-items flex-end
     justify-content flex-start
-    padding-top 4em
+    padding-top 5em
     padding-right 2rem
   @media (min-width 1100px)
     padding-right 4rem
   @media (max-width 992px)
     br
       display none
+  &__avatar
+    display inline-block
+    width 7rem
+    height @width
+    margin-bottom 2rem
+    img
+      border-radius 50%
+  &__info
+    margin 0
+    color rgba(white, .5)
+    @media (max-width 992px)
+      font-size 1.6rem
+      line-height 1.8
+    strong
+      color #fff
+      font-weight 300
