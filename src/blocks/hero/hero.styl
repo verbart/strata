@@ -7,8 +7,12 @@
   min-height 400px
   text-align center
   padding 2rem 1rem
-  background url('../images/overlay.png'),
-             url('../images/bg.jpg') no-repeat top left / auto 100%
+  background-color #1f1815
+  background-attachment scroll, fixed
+  background-image url('../images/overlay.png'), url('../images/bg.jpg')
+  background-position top left, top left
+  background-repeat repeat, no-repeat
+  background-size auto, auto 100%
   @media (min-width 992px)
     position fixed
     top 0
@@ -23,6 +27,8 @@
   @media (min-width 1100px)
     padding-right 4rem
   @media (max-width 992px)
+    background-position center
+    background-size auto, cover
     br
       display none
   &__avatar
