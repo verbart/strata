@@ -1,17 +1,17 @@
 section.main__section.portfolio
-    h2.heading.heading_2 Recent Work
+  h2.heading.heading_2 Recent Work
 
-    .row
-        for item in [1,2,3,4,5,6]
-            .col-sm-6
-                .thumbnail
-                    a(href='images/0'+item+'.jpg')
-                        img.thumbnail__preview(
-                            data-title='view'
-                            title='Magna sed consequat tempus'
-                            style='background-image: url(images/0' + item + '.jpg)'
-                        )
-                    h4.thumbnail__caption Magna sed consequat tempus
-                    .thumbnail__description Lorem ipsum dolor sit amet nisl sed nullam feugiat.
+  .row
+    for item in Array.from({ length: 6 }, (_, i) => i + 1)
+      .col-sm-6
+        .thumbnail
+          a(href='images/0' + item + '.jpg')
+            .thumbnail__preview(
+              data-title='view'
+              title='Magna sed consequat tempus'
+              style='background-image: url(images/0' + item + '.jpg)'
+            )
+          h4.thumbnail__caption Magna sed consequat tempus
+          .thumbnail__description Lorem ipsum dolor sit amet nisl sed nullam feugiat.
 
-    a(href='javascript:void(0)').button Learn more
+  a(href='javascript:void(0)').button Learn more

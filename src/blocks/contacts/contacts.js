@@ -1,37 +1,35 @@
-import $ from 'jquery';
+import axios from 'axios';
+import Noty from 'noty';
+import { getFormFields } from '../../helpers/getFormFields';
 
+const formElement = document.querySelector('.contacts__form');
 
-$('.contacts__form').submit(function (e) {
-    e.preventDefault();
+formElement.addEventListener('submit', (event) =>  {
+  event.preventDefault();
 
-    const name = $(this.elements['name']).val();
-    const email = $(this.elements['email']).val();
-    const message = $(this.elements['message']).val();
-    const page = location.href;
-    const _gotcha = $(this.elements['_gotcha']).val();
+  const formFields = getFormFields(formElement);
 
-    if (_gotcha) return;
+  if (formFields._gotcha) {
+    return;
+  }
 
-    $.ajax({
-        url: 'https://formspree.io/wtf.noword@gmail.com',
-        method: 'POST',
-        dataType: 'json',
-        data: {
-            _subject: 'From strata',
-            _format: 'plain',
-            _gotcha,
+  axios.post('https://formspree.io/wtf.noword@gmail.com', {
+    _subject: 'From strata',
+    _format: 'plain',
+    page: window.location.href,
 
-            page,
-            email,
-            name,
-            message
-        }
-    })
-    .done(() => {
-        // Message sended
-    }).fail(() => {
-        // Message dont sended
-    }).always(() => {
-        this.reset();
-    });
+    ...formFields
+  }).then(() => {
+    new Noty({
+      text: 'Your message is successfully sent!',
+      type: 'success'
+    }).show();
+  }).catch(() => {
+    new Noty({
+      text: 'Your message not sent!',
+      type: 'error'
+    }).show();
+  }).finally(() => {
+    formElement.reset();
+  });
 });

@@ -1,5 +1,9 @@
-window.$ = window.jQuery = require('jquery');
+import Noty from 'noty';
 
-require('./blocks/hero/hero');
-require('./blocks/portfolio/portfolio');
-require('./blocks/contacts/contacts');
+Noty.overrideDefaults({
+  timeout: 3000
+});
+
+import './blocks/hero/hero';
+import './blocks/portfolio/portfolio';
+import './blocks/contacts/contacts';

@@ -1,5 +1,5 @@
 {
-  "name": "spectral",
+  "name": "strata",
   "version": "0.0.1",
   "author": "Artem Verbat",
   "homepage": "https://github.com/verbart/strata#readme",
@@ -11,33 +11,41 @@
     "url": "https://github.com/verbart/strata/issues"
   },
   "scripts": {
-    "start": "NODE_ENV=development ./node_modules/.bin/gulp",
-    "build": "NODE_ENV=production ./node_modules/.bin/gulp build"
+    "start": "gulp",
+    "build": "NODE_ENV=production gulp build"
   },
   "devDependencies": {
-    "autoprefixer": "^6.5.3",
-    "babel-preset-es2015": "^6.18.0",
-    "babelify": "^7.3.0",
-    "browser-sync": "^2.18.2",
-    "browserify": "^13.1.1",
-    "del": "^2.2.2",
-    "gulp": "github:gulpjs/gulp#4.0",
-    "gulp-clean-css": "^2.0.13",
-    "gulp-if": "^2.0.2",
-    "gulp-imagemin": "^3.1.1",
-    "gulp-postcss": "^6.2.0",
-    "gulp-pug": "^3.1.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-sourcemaps": "^1.9.1",
-    "gulp-stylus": "^2.6.0",
-    "gulp-uglify": "^2.0.0",
-    "gulp-util": "^3.0.7",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0"
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "autoprefixer": "^10.2.0",
+    "babelify": "^10.0.0",
+    "browser-sync": "^2.26.13",
+    "browserify": "^17.0.0",
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-if": "^3.0.0",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-postcss": "^9.0.0",
+    "gulp-pug": "^4.0.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-stylus": "^2.7.0",
+    "gulp-uglify": "^3.0.0",
+    "gulp-util": "^3.0.8",
+    "postcss": "^8.2.3",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "font-awesome": "^4.7.0",
-    "jquery": "^3.1.1",
-    "simplelightbox": "^1.10.4"
-  }
+    "noty": "^3.2.0-beta",
+    "simple-lightbox": "^2.1.0"
+  },
+  "browserslist": [
+    "> 5%",
+    "ff > 14"
+  ]
 }

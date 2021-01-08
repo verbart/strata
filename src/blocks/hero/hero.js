@@ -1,8 +1,7 @@
-import $ from 'jquery';
-
 // Parallax factor (lower = more intense, higher = less intense).
 const parallaxFactor = 20;
+const heroElement = document.querySelector('.hero');
 
-$(window).on('scroll', function() {
-    $('.hero').css('background-position', 'left ' + (-1 * (parseInt($(window).scrollTop()) / parallaxFactor)) + 'px');
+window.addEventListener('scroll', () => {
+  heroElement.style.backgroundPosition = `left ${(-1 * (window.scrollY / parallaxFactor))}px`;
 });

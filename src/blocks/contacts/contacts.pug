@@ -1,34 +1,37 @@
 section.main__section.contacts
-    h2.heading.heading_2 Get In Touch
-    p Accumsan pellentesque commodo blandit enim arcu non at amet id arcu magna. Accumsan orci faucibus id eu lorem semper nunc nisi lorem vulputate lorem neque lorem ipsum dolor.
+  h2.heading.heading_2 Get In Touch
+  p Accumsan pellentesque commodo blandit enim arcu non at amet id arcu magna. Accumsan orci faucibus id eu lorem semper nunc nisi lorem vulputate lorem neque lorem ipsum dolor.
 
-    .row
-        .col-sm-8
-            form.form.contacts__form
-                input(type='text' name='_gotcha' style='display: none;')
+  .row
+    .col-sm-8
+      form.form.contacts__form
+        input(type='text' name='_gotcha' style='display: none;')
 
-                .row
-                    .col-sm-6
-                        input.form__input(placeholder='Name' name='name' required)
-                    .col-sm-6
-                        input.form__input(placeholder='Email' name='email' type='email' required)
-                    .col-xs-12
-                        textarea.form__input.form__textarea(rows='4' placeholder='Message' name='message')
-                button.button Send message
+        .row
+          .col-sm-6
+            input.form__input(placeholder='Name' name='name' required)
+          .col-sm-6
+            input.form__input(placeholder='Email' name='email' type='email' required)
+          .col-xs-12
+            textarea.form__input.form__textarea(rows='4' placeholder='Message' name='message')
 
-        .col-sm-4
-            address
-                ul.address
-                    li.address__item
-                        i.fa.fa-home
-                        span 1234 Somewhere Rd.
-                            br
-                            | Nashville, TN 00000
-                            br
-                            | United States
-                    li.address__item
-                        i.fa.fa-mobile
-                        a.link.link_dotted(href='tel:+380938930830') +38 093 893 0830
-                    li.address__item
-                        i.fa.fa-envelope-o
-                        a.link.link_dotted(href='mailto:artem.verbat@gmail.com') artem.verbat@gmail.com
+        button.button Send message
+
+    .col-sm-4
+      address
+        ul.address
+          li.address__item
+            i.fa.fa-home
+            span 1234 Somewhere Rd.
+              br
+              | Nashville, TN 00000
+              br
+              | United States
+
+          li.address__item
+            i.fa.fa-mobile
+            a.link.link_dotted(href='tel:+380938930830') +38 093 893 0830
+
+          li.address__item
+            i.fa.fa-envelope-o
+            a.link.link_dotted(href='mailto:artem.verbat@gmail.com') artem.verbat@gmail.com

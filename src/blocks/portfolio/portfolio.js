@@ -1,5 +1,5 @@
-import $ from 'jquery';
+import SimpleLightbox from 'simple-lightbox';
 
-require('simplelightbox');
-
-$('.portfolio .thumbnail > a').simpleLightbox();
+new SimpleLightbox({
+  elements: '.portfolio .thumbnail > a'
+});
