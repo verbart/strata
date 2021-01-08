@@ -13,7 +13,7 @@ formElement.addEventListener('submit', (event) =>  {
     return;
   }
 
-  axios.post('https://formspree.io/wtf.noword@gmail.com', {
+  axios.post('https://formspree.io/f/mknpkrbp', {
     _subject: 'From strata',
     _format: 'plain',
     page: window.location.href,
